@@ -1,8 +1,21 @@
 # JobOffers Application 💼
-**Author: Agnieszka Magura**
+**Author: Agnieszka Magura** 
 
 ## 📖 Description
-JobOffers is a robust backend system built with **Spring Boot 2.7.8**, designed to automate the job search process for Junior Java Developers. The application follows **Clean Architecture** and **Hexagonal** principles, ensuring a clear separation between business logic and infrastructure.
+JobOffers is a robust backend system built with Spring Boot 2.7.8, designed to automate the job search process for Junior Java Developers. The application serves as a centralized hub for collecting, managing, and notifying users about new career opportunities.
+
+### **Key Features:**
+* **Automated Data Fetching**: An integrated **Scheduler** periodically fetches the latest job postings from external servers at specified intervals.
+* **Security & Authentication**: Access to job offers is secured via a registration and login system, utilizing **JWT (JSON Web Tokens)** for stateless authentication.
+* **Offer Management**: Authenticated users can browse the aggregated database of offers or manually add new listings.
+* **Data Integrity**: The system ensures that duplicate offers are handled correctly, and expired or irrelevant data can be managed during scheduler cycles.
+
+#### **Architecture & Principles:**
+The project is strictly developed following Clean Architecture and Hexagonal Architecture (Ports and Adapters) principles. This ensures:
+
+* **Decoupling:** The core business logic remains independent of technical details like databases (MongoDB), external APIs, or security configurations.
+
+* **Testability:** High test coverage across domain logic, integration points, and API endpoints.
 
 ## 🏗️ Architecture & Flow
 The project utilizes the **Ports and Adapters** pattern. This allows the core domain to remain independent of technical details like databases, external APIs, or security configurations.
