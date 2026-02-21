@@ -1,0 +1,33 @@
+${AnsiColor.BRIGHT_GREEN}
+                                                ${AnsiColor.BRIGHT_YELLOW}SOLID?${AnsiColor.BRIGHT_GREEN}
+                             ${AnsiColor.BRIGHT_YELLOW}GIT?${AnsiColor.BRIGHT_GREEN}                         ${AnsiColor.BRIGHT_MAGENTA}TDD?${AnsiColor.BRIGHT_GREEN}
+             ${AnsiColor.BRIGHT_WHITE} ${AnsiColor.BRIGHT_MAGENTA}OOP?${AnsiColor.BRIGHT_GREEN}
+                                                           ${AnsiColor.BRIGHT_YELLOW}JVM?${AnsiColor.BRIGHT_GREEN}
+          ${AnsiColor.BRIGHT_WHITE}             ${AnsiColor.BRIGHT_YELLOW}REST?${AnsiColor.BRIGHT_GREEN}
+                  ${AnsiColor.BRIGHT_CYAN}
+                    /^\/^\                       ${AnsiColor.BRIGHT_MAGENTA}JPA?${AnsiColor.BRIGHT_GREEN}
+                  _|__|  O|
+         \/     /~     \_/ \   [ JUNIOR JAVA DEVELOPER ]${AnsiColor.BRIGHT_GREEN}
+          \____|__________/  \     Ready to code...${AnsiColor.BRIGHT_GREEN}
+         GIT     \_______      \    //  (💻)  \\${AnsiColor.BRIGHT_GREEN}
+                         `\     \   //  /--\   \\${AnsiColor.BRIGHT_GREEN}
+                           |     |                  \
+                          /      /                    \
+                         /     /                       \\
+                       /      /                         \ \
+                      /     /                            \  \
+                    /     /             _----_            \   \
+                   /     /           _-~      ~-_         |   |
+                  (      (        _-~    _--_    ~-_     _/   |
+                   \      ~-____-~    _-~    ~-_    ~-_-~    /
+                     ~-_           _-~          ~-_       _-~
+                        ~--______-~                ~-___-~
+${AnsiColor.BRIGHT_CYAN}
+            ╔══════════════════════════════════════════════════════╗
+            ║  ${AnsiColor.BRIGHT_WHITE}Project:  ${AnsiColor.BRIGHT_YELLOW}JOB OFFERS APPLICATION${AnsiColor.BRIGHT_CYAN}                    ║
+            ║  ${AnsiColor.BRIGHT_WHITE}Stack:    ${AnsiColor.BRIGHT_GREEN}Java 17, Spring Boot, MongoDB, Redis${AnsiColor.BRIGHT_CYAN}      ║
+            ║  ${AnsiColor.BRIGHT_WHITE}Tests:    ${AnsiColor.BRIGHT_GREEN}Testcontainers, WireMock, Awaitility${AnsiColor.BRIGHT_CYAN}      ║
+            ║  ${AnsiColor.BRIGHT_WHITE}Version:  ${AnsiColor.BRIGHT_MAGENTA}v1.0-WORKS-ON-MY-MACHINE${AnsiColor.BRIGHT_CYAN}                  ║
+            ╚══════════════════════════════════════════════════════╝
+${AnsiColor.BRIGHT_YELLOW}                 >> STATUS: READY TO START MY FIRST DREAM JOB <<
+${AnsiColor.DEFAULT}
