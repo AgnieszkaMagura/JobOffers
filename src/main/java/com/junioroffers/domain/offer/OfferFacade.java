@@ -3,6 +3,7 @@ package com.junioroffers.domain.offer;
 import com.junioroffers.domain.offer.dto.OfferRequestDto;
 import com.junioroffers.domain.offer.dto.OfferResponseDto;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class OfferFacade {
                 .orElseThrow(() -> new OfferNotFoundException(id));
     }
 
+    @CacheEvict(cacheNames = "jobOffers", allEntries = true)
     public OfferResponseDto saveOffer(OfferRequestDto offerDto) {
         final Offer offer = OfferMapper.mapFromOfferDtoToOffer(offerDto);
         final Offer save = offerRepository.save(offer);
