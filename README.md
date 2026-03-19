@@ -1,118 +1,128 @@
-# JobOffers Application 💼
-**Author: Agnieszka Magura** 
+<div align="center">
+
+# 💼 JobOffers - Recruitment Aggregator Backend
+**Author: Agnieszka Magura**
+
+</div>
 
 ## 📖 Description
-JobOffers is a robust backend system built with Spring Boot 2.7.8, designed to automate the job search process for Junior Java Developers. The application serves as a centralized hub for collecting, managing, and notifying users about new career opportunities.
+**JobOffers** is a robust backend system built with **Spring Boot 2.7.8**, designed to automate the job search process for Junior Java Developers. The application serves as a centralized hub for collecting, managing, and notifying users about new career opportunities.
 
-### **Key Features:**
-* **Automated Data Fetching**: An integrated **Scheduler** periodically fetches the latest job postings from external servers at specified intervals.
-* **Security & Authentication**: Access to job offers is secured via a registration and login system, utilizing **JWT (JSON Web Tokens)** for stateless authentication.
-* **Offer Management**: Authenticated users can browse the aggregated database of offers or manually add new listings.
-* **Data Integrity**: The system ensures that duplicate offers are handled correctly, and expired or irrelevant data can be managed during scheduler cycles.
+## 🚀 Project Overview
+This repository contains the core business logic and infrastructure for the JobOffers application. It integrates multiple external services and provides a secure API for the client-side application.
 
-#### **Architecture & Principles:**
-The project is strictly developed following Clean Architecture and Hexagonal Architecture (Ports and Adapters) principles. This ensures:
+* **🖥️ Frontend Client:** [JobOffers React App](https://github.com/AgnieszkaMagura/job-offers-frontend)
+* **⚙️ Core Logic:** Automated fetching, data deduplication, and JWT-secured access.
 
-* **Decoupling:** The core business logic remains independent of technical details like databases (MongoDB), external APIs, or security configurations.
+### ✨ Key Features
+* **Automated Data Fetching**: An integrated **Spring Scheduler** periodically fetches the latest job postings from external recruitment platforms.
+* **Security & Authentication**: Access to job offers is secured via **JWT (JSON Web Tokens)** for stateless authentication.
+* **Offer Management**: Authenticated users can browse the aggregated database, search by ID, or manually add new listings.
+* **Data Integrity**: Integrated **Bean Validation** ensures data quality, while the system handles duplicate offers during scheduler cycles.
 
-* **Testability:** High test coverage across domain logic, integration points, and API endpoints.
+## 🏗️ Architecture & Principles
+The project is strictly developed following **Clean Architecture** and **Hexagonal Architecture (Ports and Adapters)** principles.
 
-## 🏗️ Architecture & Flow
-The project utilizes the **Ports and Adapters** pattern. This allows the core domain to remain independent of technical details like databases, external APIs, or security configurations.
+<div align="center">
+  <img width="850" alt="JobOffers Architecture Diagram" src="architecture/job%20offers%20architecture.png" />
+</div>
 
-```mermaid
-graph TD
-    subgraph External_World [External Services]
-        Client((User/Postman))
-        RemoteSrv[External Job API]
-    end
+### 🧩 System Flow (Mapped to Diagram)
+* **Decoupling:** The core domain logic remains independent of technical details like databases, external APIs, or security configurations.
+* 🔵 **Java Components:** Contains the Offer Facade and Services – the entry point to business logic, ensuring high maintainability and clean domain boundaries.
+* 🟢 **MongoDB Database:** Primary persistent storage for user accounts and the aggregated job offers repository.
+* 🟡 **Redis Cache:** High-performance in-memory storage used to optimize response times for frequent offer queries.
+* 🔴 **External Server:** Represents remote recruitment platforms from which the system fetches data (simulated with WireMock during tests).
+* ⚪ **Scheduler Task:** The Spring Task Scheduler that automates the recurring lifecycle of fetching and updating job openings.
 
-    subgraph JobOffers_Application [Spring Boot App]
-        subgraph Infrastructure_Layer [Infrastructure]
-            Auth[Security JWT Module]
-            Controller[Offer REST Controller]
-            ClientHttp[Http Offer Client]
-        end
-
-        subgraph Domain_Layer [Domain - Hexagonal]
-            Facade[Offer Facade]
-            Service[Offer Service]
-        end
-
-        subgraph Persistence_Layer [Data & Cache]
-            Mongo[(MongoDB Database)]
-            Redis[(Redis Cache)]
-        end
-        
-        subgraph Scheduling [Automated Tasks]
-            Sched[Spring Scheduler]
-        end
-    end
-
-    Client -- POST /register/login --> Auth
-    Client -- GET /offers --> Controller
-    Controller --> Facade
-    Facade --> Service
-    Service --> Mongo
-    Service --> Redis
-    
-    Sched -- Fetch Offers --> Facade
-    Facade --> ClientHttp
-    ClientHttp -- HTTP GET --> RemoteSrv
-```
-
-## 🛠️ Technologies & Skills
-
-### Core
-![Java](https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=java)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-2.7.8-brightgreen?style=for-the-badge&logo=spring-boot)
-![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-
-### Testing
-![JUnit5](https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
-![Mockito](https://img.shields.io/badge/Mockito-grey?style=for-the-badge)
-![Testcontainers](https://img.shields.io/badge/Testcontainers-664B95?style=for-the-badge)
-![WireMock](https://img.shields.io/badge/WireMock-orange?style=for-the-badge)
-![Awaitility](https://img.shields.io/badge/Awaitility-blue?style=for-the-badge)
-
-* **Core Details:** Java 17, Spring Boot 2.7.8 (Web, Security + JWT, Validation, Data MongoDB, Scheduler)
-* **Databases:** MongoDB + MongoExpress, Redis & Jedis (with Redis-Commander)
-* **Testing Details:** * **Unit Tests:** JUnit 5, Mockito, AssertJ
-    * **Integration Tests:** Testcontainers, WireMock, Awaitility
-    * **API Testing:** MockMvc, RestTemplate
-
-
-## 🧪 Quality Assurance
-The application was built with a strong emphasis on code quality:
-* **Asynchrony:** Testing scheduled tasks using **Awaitility**.
-* **Mocking:** Simulating external job servers with **WireMock**.
-* **Real Environment:** Using **Testcontainers** to run integration tests on actual MongoDB instances.
+## 🧪 Quality Assurance & Testing
+The application was built with a strong emphasis on **Test-Driven Development (TDD)** and high test coverage:
+* **Asynchrony:** Testing scheduled tasks and background processes using **Awaitility**.
+* **Mocking:** Full simulation of external job servers with **WireMock** for reliable integration tests.
+* **Real Environment:** Using **Testcontainers** to run integration tests on actual **MongoDB** instances.
+* **API Testing:** Comprehensive endpoint verification using **MockMvc** and **RestTemplate**.
 
 ## 📡 API Endpoints
 | Method | Endpoint | Description | Access |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/register` | Register a new user account | Public |
-| `POST` | `/token` | Authenticate and get JWT Token | Public |
-| `GET` | `/offers` | Retrieve all job offers | Private |
-| `GET` | `/offers/{id}` | Find a specific offer by ID | Private |
-| `POST` | `/offers` | Manually add a new offer | Private |
+| `POST` | `/register` | Register a new user account | **Public** |
+| `POST` | `/token` | Authenticate and get JWT Token | **Public** |
+| `GET` | `/offers` | Retrieve all job offers | **Private** |
+| `GET` | `/offers/{id}` | Find a specific offer by ID | **Private** |
+| `POST` | `/offers` | Manually add a new offer | **Private** |
 
+## 💻 Frontend Integration
+The backend is fully integrated with a modern React client. You can find the frontend repository here: **[JobOffers Client App](https://github.com/AgnieszkaMagura/job-offers-frontend)**.
 
+**Key Frontend Technologies (from `App.tsx`):**
+* **React 18** (Functional Components, Hooks: `useState`, `useEffect`, `useCallback`)
+* **TypeScript** – interfaces synchronized with Backend DTOs for full type safety
+* **React Router Dom v6** – handling protected routes and navigation
+* **Axios** – asynchronous API communication with JWT interceptors
+* **Tailwind CSS** – responsive design with a native **Dark Mode** toggle
+* **Lucide React** – modern iconography for a clean UI
 
-🚀 How to run
-1. Clone the repository: git clone https://github.com/AgnieszkaMagura/JobOffers.git
+## 🚀 How to run
+1. **Clone the repository:** `git clone https://github.com/AgnieszkaMagura/JobOffers.git`
+2. **Infrastructure:** `docker-compose up -d` (requires Docker Desktop).
+3. **Run the app:** `./mvnw spring-boot:run` or via your IDE.
+4. **API Docs:** Documentation is available at: `http://localhost:8000/swagger-ui/index.html`
 
-2. Spin up the infrastructure: docker-compose up (requires Docker Desktop).
+---
 
-3. Build and run the app: ./mvnw spring-boot:run or via your IDE.
+<div align="center">
+  <strong>🛠️ Backend Tech Stack</strong><br>
+  <img src="https://img.shields.io/badge/Architecture-Hexagonal-3498db?style=for-the-badge&logo=architecture" alt="Hexagonal Architecture">
+  <img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17">
+  <img src="https://img.shields.io/badge/Spring_Boot-2.7.8-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/Lombok-bc473a?style=for-the-badge&logo=java&logoColor=white" alt="Lombok">
+  <img src="https://img.shields.io/badge/Bean--Validation-009688?style=for-the-badge" alt="Bean Validation">
+  <img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white" alt="Spring Security">
+  <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=json-web-tokens&logoColor=white" alt="JWT">
+  <br>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+</div>
 
-4. API Documentation is available at: http://localhost:8000/swagger-ui/index.html (port depends on your local configuration).
+<br>
 
- ## 🤝 Contact
-**Author:** Agnieszka Magura  
-**LinkedIn:** [Agnieszka Magura](https://www.linkedin.com/in/agnieszka-magura-0714241a8/)
+<div align="center">
+  <strong>🧪 Testing Tools</strong><br>
+  <img src="https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit5">
+  <img src="https://img.shields.io/badge/Mockito-ff9c1e?style=for-the-badge" alt="Mockito">
+  <img src="https://img.shields.io/badge/Testcontainers-61696e?style=for-the-badge&logo=testcontainers&logoColor=white" alt="Testcontainers">
+  <img src="https://img.shields.io/badge/Wiremock-000000?style=for-the-badge&logo=wiremock&logoColor=white" alt="Wiremock">
+  <img src="https://img.shields.io/badge/Awaitility-3498db?style=for-the-badge" alt="Awaitility">
+</div>
 
-If you like this project, please consider giving it a ⭐!
+<br>
+
+<div align="center">
+  <strong>🖥️ Frontend Tech Stack</strong><br>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="React Router">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <br>
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios">
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/Lucide_Icons-F72C5B?style=for-the-badge&logo=lucide&logoColor=white" alt="Lucide">
+</div>
+
+<br>
+
+<div align="center">
+  <h3>🤝 Contact</h3>
+  <em>Designed with ❤️ by <strong>Agnieszka Magura</strong></em><br>
+  <a href="https://github.com/AgnieszkaMagura" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://www.linkedin.com/in/agnieszka-magura-0714241a8/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+  <br><br>
+  If you like this project, please consider giving it a ⭐!
+</div>
+
+<br>
