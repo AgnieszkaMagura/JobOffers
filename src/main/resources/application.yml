@@ -1,7 +1,7 @@
 spring:
   redis:
     host: ${REDIS_HOST:localhost}
-    port: ${REDIS_PORT:63792}
+    port: ${REDIS_PORT:6381}
   cache:
     type: redis
     redis:
@@ -9,7 +9,9 @@ spring:
   data:
     mongodb:
       auto-index-creation: true
-      uri: mongodb://admin:admin@localhost:27017/offers
+#      uri: mongodb://admin:admin@localhost:27017/offers
+      uri: mongodb://${MONGO_USER:admin}:${MONGO_PASSWORD:admin}@${MONGO_HOST:localhost}:${MONGO_PORT:27019}/${MONGO_DB_NAME:offers}?authSource=${MONGO_AUTH_SOURCE:admin}
+
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -26,7 +28,7 @@ http:
   offers:
     scheduler:
       request:
-        delay: PT3H
+        delay: PT24H
 
 scheduling:
   enabled: true
