@@ -6,28 +6,28 @@ services:
     image: mongo:4.0.10
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: offers
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=offers
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     ports:
-      - "27017:27017"
+      - "27019:27017"
 
   mongo-express:
     image: mongo-express
     restart: always  #restart the container regardless of the exit status
     ports:
-      - "8081:8081"
+      - "8086:8081"
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/  # mongodb://{mongo-image-username}:{mongo-image-password}@{mongo-image-name}:{port}
+      ME_CONFIG_MONGODB_ADMINUSERNAE: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongo:27017/  # mongodb://{mongo-image-username}:{mongo-image-password}@{mongo-image-name}:{port}
 
   redis:
     image: redis
     ports:
-      - "63792:6379"
+      - "6381:6379"
     restart: always
 
   redis-commander:
@@ -36,4 +36,27 @@ services:
     environment:
       - REDIS_HOSTS=local:redis:6379
     ports:
-      - "8082:8081"
+      - "8085:8081"
+
+  joboffers:
+    container_name: joboffers
+    build: .
+    #    image: 549710417026.dkr.ecr.eu-central-1.amazonaws.com/joboffers:latest
+    restart: always
+    ports:
+      - "8006:8080"
+    environment:
+      - SPRING_DATA_MONGODB_USERNAME=admin
+      - SPRING_DATA_MONGODB_PASSWORD=admin
+      - SPRING_DATA_MONGODB_DATABASE=offers
+      - SPRING_DATA_MONGODB_HOST=mongo
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE=admin
+      - MONGO_USER=admin
+      - MONGO_PASSWORD=admin
+      - MONGO_AUTH_SOURCE=admin
+      - JWT_SECRET=TwojeTajneHasloJobOffers2026!_Min32Znaki
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
