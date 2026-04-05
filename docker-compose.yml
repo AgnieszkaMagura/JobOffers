@@ -60,3 +60,10 @@ services:
       - SPRING_REDIS_PORT=6379
       - MONGO_HOST=mongo
       - MONGO_PORT=27017
+
+  job-offers-frontend:
+    container_name: joboffers-frontend
+    image: 549710417026.dkr.ecr.eu-central-1.amazonaws.com/joboffers-front:latest
+    restart: always
+    ports:
+      - '80:80'
