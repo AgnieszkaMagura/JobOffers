@@ -11,8 +11,11 @@
 ## 🚀 Project Overview
 This repository contains the core business logic and infrastructure for the JobOffers application. It integrates multiple external services and provides a secure API for the client-side application.
 
-* **🖥️ Frontend Client:** [JobOffers React App](https://github.com/AgnieszkaMagura/job-offers-frontend)
-* **⚙️ Core Logic:** Automated fetching, data deduplication, and JWT-secured access.
+## 🔗 Quick Links
+
+* 🌐 **Live Demo:** [View Application](http://3.124.216.135:8082/register)
+* 🖥️ **Frontend Repository:** [View Code](https://github.com/AgnieszkaMagura/job-offers-frontend)
+* 🔑 **Interactive API Docs (Swagger):** [Explore API](http://3.124.216.135:8081/swagger-ui/index.html)
 
 ### ✨ Key Features
 * **Automated Data Fetching**: An integrated **Spring Scheduler** periodically fetches the latest job postings from external recruitment platforms.
