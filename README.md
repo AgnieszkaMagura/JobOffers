@@ -72,17 +72,26 @@ The backend is fully integrated with a modern React client. You can find the fro
 4. **API Docs:** Documentation is available at: `http://localhost:8000/swagger-ui/index.html`
 
 ---
+
 <div align="center">
-  <strong>🛠️ Backend Tech Stack (Integrated)</strong><br>
- <img src="https://img.shields.io/badge/Architecture-Hexagonal-3498db?style=for-the-badge&logo=architecture" alt="Hexagonal Architecture">
-<img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17">
-<img src="https://img.shields.io/badge/Spring_Boot-2.7.8-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
-<img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white" alt="Spring Security">
-<img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=json-web-tokens&logoColor=white" alt="JWT">
-<br>
-<img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
-<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <strong>🛠️ Backend Tech Stack</strong><br>
+  <img src="https://img.shields.io/badge/Architecture-Hexagonal-3498db?style=for-the-badge&logo=architecture" alt="Hexagonal Architecture">
+  <img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 17">
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/Spring_Scheduler-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="Spring Scheduler">
+  <img src="https://img.shields.io/badge/RestTemplate-6DB33F?style=for-the-badge&logo=spring&logoColor=white" alt="RestTemplate">
+  <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven">
+  <img src="https://img.shields.io/badge/Lombok-bc473a?style=for-the-badge&logo=java&logoColor=white" alt="Lombok">
+  <img src="https://img.shields.io/badge/Bean-Validation-009688?style=for-the-badge" alt="Bean Validation">
+  <img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white" alt="Spring Security">
+  <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=json-web-tokens&logoColor=white" alt="JWT">
+  <br>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
+  <img src="https://img.shields.io/badge/Amazon_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white" alt="EC2">
+  <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black" alt="Swagger">
 </div>
 
 <br>
@@ -97,6 +106,18 @@ The backend is fully integrated with a modern React client. You can find the fro
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios">
 <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
 <img src="https://img.shields.io/badge/Lucide_Icons-F72C5B?style=for-the-badge&logo=lucide&logoColor=white" alt="Lucide">
+</div>
+
+<br>
+
+<div align="center">
+  <strong>🧪 Testing Tools</strong><br>
+  <img src="https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white" alt="JUnit5">
+  <img src="https://img.shields.io/badge/Mockito-ff9c1e?style=for-the-badge" alt="Mockito">
+  <img src="https://img.shields.io/badge/Testcontainers-61696e?style=for-the-badge&logo=testcontainers&logoColor=white" alt="Testcontainers">
+  <img src="https://img.shields.io/badge/Wiremock-000000?style=for-the-badge&logo=wiremock&logoColor=white" alt="Wiremock">
+  <img src="https://img.shields.io/badge/Log4j2-D22128?style=for-the-badge&logo=apache&logoColor=white" alt="Log4j2">
+  <img src="https://img.shields.io/badge/Awaitility-3498db?style=for-the-badge" alt="Awaitility">
 </div>
 
 <br>
